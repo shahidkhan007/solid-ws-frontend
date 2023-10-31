@@ -1,0 +1,19 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Condensed', 'Times New Roman', Times, serif;
+}
+
+button {
+    padding: 4px 8px;
+    background-color: transparent;
+    border: 0px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=text] {
+    padding: 4px 8px;
+    border: 0px;
+    border-radius: 4px;
+}

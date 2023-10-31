@@ -1,0 +1,11 @@
+.rooms-container {
+    display: flex;
+    width: 70%;
+    margin: auto;
+    /* flex-direction: column; */
+}
+
+.room-row-container {
+    width: 100%;
+    display: flex;
+}
