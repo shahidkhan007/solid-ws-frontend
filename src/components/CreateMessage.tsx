@@ -18,14 +18,28 @@ export const CreateMessage = (props: { room: Resource<Room | undefined> }) => {
         ev.preventDefault();
 
         if (props.room()) {
-            messageService.sendMessage({ ...message, targetRoom: props.room()!.id });
+            messageService.sendMessage({
+                ...message,
+                targetRoom: props.room()!.id,
+            });
         }
     };
 
     return (
-        <form onSubmit={handleSend}>
-            <input type="text" name="content" onInput={handleInput} />
-            <button type="submit">Send</button>
+        <form onSubmit={handleSend} class="flex items-center">
+            <input
+                type="text"
+                name="content"
+                onInput={handleInput}
+                class="border border-blue-500 px-6 py-3 rounded-full flex-1"
+                placeholder="Type your message here..."
+            />
+            <button
+                type="submit"
+                class="absolute border right-3 px-4 py-1 text-white font-bold bg-gradient-to-tr from-purple-500 to to-blue-500 rounded-full"
+            >
+                Send
+            </button>
         </form>
     );
 };

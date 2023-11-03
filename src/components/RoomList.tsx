@@ -12,10 +12,13 @@ const RoomRow = (props: { room: Room }) => {
     };
 
     return (
-        <div style={{ display: "flex" }} class="room-row-container">
-            <div class="room-row-name">{props.room.name}</div>
-            <div class="room-row-btn-container">
-                <button class="room-row-send-btn" onClick={handleJoinRoom}>
+        <div class="flex justify-between px-4 py-3 border rounded-xl mb-3 items-center">
+            <div class="  capitalize">{props.room.name}</div>
+            <div class=" ">
+                <button
+                    class="border border-blue-500 h-full  px-6 py-1 rounded-lg text-blue-800"
+                    onClick={handleJoinRoom}
+                >
                     Join
                 </button>
             </div>
@@ -24,16 +27,20 @@ const RoomRow = (props: { room: Room }) => {
 };
 
 export const RoomList = (props: { refetchTrigger: Accessor<number> }) => {
-    const [roomsResult, { refetch }] = createResource(() => roomService.getRooms({}));
+    const [roomsResult, { refetch }] = createResource(() =>
+        roomService.getRooms({})
+    );
 
     on([props.refetchTrigger], () => {
         refetch();
     });
 
     return (
-        <div class="rooms-container">
+        <div class="container mx-auto border max-w-md rounded-3xl p-3 mt-5 border-blue-500">
             <Show when={!roomsResult.loading} fallback={<CircularProgress />}>
-                <For each={roomsResult()!.rows}>{(room, _idx) => <RoomRow room={room} />}</For>
+                <For each={roomsResult()!.rows}>
+                    {(room, _idx) => <RoomRow room={room} />}
+                </For>
             </Show>
         </div>
     );

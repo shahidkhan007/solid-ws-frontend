@@ -6,9 +6,11 @@ export const Rooms = () => {
     const [createRoomCount, setCreateRoomCount] = createSignal(0);
 
     return (
-        <div>
+        <div class="py-20">
+            <CreateRoom
+                triggerRefetch={() => setCreateRoomCount((n) => n + 1)}
+            />
             <RoomList refetchTrigger={createRoomCount} />
-            <CreateRoom triggerRefetch={() => setCreateRoomCount((n) => n + 1)} />
         </div>
     );
 };
